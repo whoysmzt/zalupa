@@ -1,0 +1,158 @@
+import tkinter as tk
+
+class Application(tk.Frame):
+    
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.master.title("Учет заявок")
+        self.master.geometry("400x300")
+        self.pack()
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.create_orders_btn = tk.Button(self,
+                                           text="Создать заявки",
+                                           width=20,
+                                           height=3,
+                                           command=self.create_orders_window)
+        self.create_orders_btn.pack(pady=10)
+
+        self.view_orders_btn = tk.Button(self,
+                                         text="Просмотр заявок",
+                                         width=20,
+                                         height=3,
+                                         command=self.view_orders_window)
+        self.view_orders_btn.pack(pady=10)
+
+        self.delete_orders_btn = tk.Button(self,
+                                           text="Удаление заявок",
+                                           width=20,
+                                           height=3,
+                                           command=self.delete_orders_window)
+        self.delete_orders_btn.pack(pady=10)
+
+    def create_orders_window(self):
+        pass
+
+    def view_orders_window(self):
+        pass
+
+    def delete_orders_window(self):
+        pass
+
+root = tk.Tk()
+app = Application(master=root)
+app.mainloop()
+class MainApplication(tk.Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.master.title("Заявки")
+        self.pack()
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.create_req_btn = tk.Button(self,
+                                        text="Создать заявки",
+                                        command=self.create_req_window)
+        self.create_req_btn.pack(side="top", padx=10, pady=10)
+
+        self.view_req_btn = tk.Button(self,
+                                      text="Просмотр заявок",
+                                      command=self.view_req_window)
+        self.view_req_btn.pack(side="top", padx=10, pady=10)
+
+        self.delete_req_btn = tk.Button(self,
+                                        text="Удаление заявок",
+                                        command=self.delete_req_window)
+        self.delete_req_btn.pack(side="top", padx=10, pady=10)
+    def create_req_window(self):
+        self.create_req_window = tk.Toplevel(self.master)
+        self.create_req_window.title("Создание заявок")
+        self.create_req_window.geometry("300x150")
+        self.create_req_frame = tk.Frame(self.create_req_window)
+        self.create_req_frame.pack(side="top", padx=10, pady=10)
+
+        self.req_num_lbl = tk.Label(self.create_req_frame, text="Номер заявки:")
+        self.req_num_lbl.pack(side="top")
+        self.req_num_entry = tk.Entry(self.create_req_frame)
+        self.req_num_entry.pack(side="top", padx=10, pady=10)
+
+        self.req_name_lbl = tk.Label(self.create_req_frame, text="Наименование:")
+        self.req_name_lbl.pack(side="top")
+        self.req_name_entry = tk.Entry(self.create_req_frame)
+        self.req_name_entry.pack(side="top", padx=10, pady=10)
+
+        self.req_qty_lbl = tk.Label(self.create_req_frame, text="Количество:")
+        self.req_qty_lbl.pack(side="top")
+        self.req_qty_entry = tk.Entry(self.create_req_frame)
+        self.req_qty_entry.pack(side="top", padx=10, pady=10)
+
+        self.create_req_btn = tk.Button(self.create_req_frame,
+                                        text="Создать заявку",
+                                       
+command=self.create_req)
+    self.create_req_btn.pack(side="top", padx=10, pady=10)
+
+def view_req_window(self):
+    self.view_req_window = tk.Toplevel(self.master)
+    self.view_req_window.title("Просмотр заявок")
+    self.view_req_window.geometry("400x300")
+    self.view_req_frame = tk.Frame(self.view_req_window)
+    self.view_req_frame.pack(side="top", padx=10, pady=10)
+
+    self.req_listbox = tk.Listbox(self.view_req_frame)
+    self.req_listbox.pack(side="left", fill="both")
+
+    self.scrollbar = tk.Scrollbar(self.view_req_frame)
+    self.scrollbar.pack(side="right", fill="y")
+
+    self.req_listbox.config(yscrollcommand=self.scrollbar.set)
+    self.scrollbar.config(command=self.req_listbox.yview)
+
+    self.populate_req_listbox()
+
+def delete_req_window(self):
+    self.delete_req_window = tk.Toplevel(self.master)
+    self.delete_req_window.title("Удаление заявок")
+    self.delete_req_window.geometry("400x300")
+    self.delete_req_frame = tk.Frame(self.delete_req_window)
+    self.delete_req_frame.pack(side="top", padx=10, pady=10)
+
+    self.delete_lbl = tk.Label(self.delete_req_frame, text="Выберите заявку для удаления:")
+    self.delete_lbl.pack(side="top")
+
+    self.delete_listbox = tk.Listbox(self.delete_req_frame)
+    self.delete_listbox.pack(side="left", fill="both")
+
+    self.delete_scrollbar = tk.Scrollbar(self.delete_req_frame)
+    self.delete_scrollbar.pack(side="right", fill="y")
+
+    self.delete_listbox.config(yscrollcommand=self.delete_scrollbar.set)
+    self.delete_scrollbar.config(command=self.delete_listbox.yview)
+
+    self.populate_delete_listbox()
+
+    self.delete_btn = tk.Button(self.delete_req_frame,
+                                 text="Удалить заявку",
+                                 command=self.delete_req)
+    self.delete_btn.pack(side="top", padx=10, pady=10)
+
+def populate_req_listbox(self):
+    pass
+
+def populate_delete_listbox(self):
+    pass
+
+def create_req(self):
+    pass
+
+def delete_req(self):
+    pass
+
+
+root = tk.Tk()
+app = MainApplication(master=root)
+app.mainloop()
